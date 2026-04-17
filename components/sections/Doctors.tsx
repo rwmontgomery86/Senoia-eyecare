@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "motion/react";
 import EyebrowLabel from "@/components/ui/EyebrowLabel";
 import GoldRule from "@/components/ui/GoldRule";
-import Placeholder from "@/components/ui/Placeholder";
 import { doctors } from "@/data/doctors";
 
 const OFFSETS = ["md:translate-y-0", "md:translate-y-24"];
@@ -40,11 +40,17 @@ export default function Doctors() {
             >
               <div className="overflow-hidden">
                 <div className="transition-transform duration-1000 ease-expo group-hover:-translate-y-2">
-                  <Placeholder
-                    variant="portrait"
-                    caption={d.portraitCaption}
-                    className="w-full"
-                  />
+                  <div className="relative aspect-[3/4] w-full overflow-hidden">
+                    <Image
+                      src={d.portrait}
+                      alt={`Portrait of ${d.name}`}
+                      fill
+                      loading="eager"
+                      sizes="(min-width: 768px) 50vw, 100vw"
+                      quality={85}
+                      className="object-cover object-center"
+                    />
+                  </div>
                 </div>
               </div>
               <div className="mt-8 flex items-baseline gap-4">

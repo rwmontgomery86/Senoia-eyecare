@@ -18,7 +18,7 @@ export const doctors: Doctor[] = [
       "Myopia management in children",
       "The long relationship — patients seen for a decade or more",
     ],
-    portraitCaption: "[ portrait — Dr. One, natural window light, 3:4 ]",
+    portrait: "/assets/images/home-page/doctor-ross-montgomery.jpg",
   },
   {
     slug: "name-two",
@@ -37,6 +37,6 @@ export const doctors: Doctor[] = [
       "Multifocal and hybrid lens design",
       "Dry eye and ocular surface disease",
     ],
-    portraitCaption: "[ portrait — Dr. Two, examining frame, 3:4 ]",
+    portrait: "/assets/images/home-page/doctor-taylor-williamson.jpg",
   },
 ];

@@ -1,23 +1,33 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "motion/react";
 import EyebrowLabel from "@/components/ui/EyebrowLabel";
 import GoldRule from "@/components/ui/GoldRule";
-import Placeholder from "@/components/ui/Placeholder";
+
+type Variant = "portrait" | "square" | "tall" | "landscape";
 
 type Tile = {
-  variant: "portrait" | "square" | "tall" | "landscape";
-  caption: string;
+  variant: Variant;
+  src: string;
+  alt: string;
   span?: string;
 };
 
+const ASPECT: Record<Variant, string> = {
+  portrait: "aspect-[3/4]",
+  square: "aspect-square",
+  tall: "aspect-[9/16]",
+  landscape: "aspect-[16/9]",
+};
+
 const TILES: Tile[] = [
-  { variant: "tall", caption: "[ portrait — model, oversized round ]", span: "row-span-2" },
-  { variant: "square", caption: "[ macro — acetate detail, gold rivet ]" },
-  { variant: "portrait", caption: "[ portrait — couple, golden hour ]" },
-  { variant: "landscape", caption: "[ interior — Senoia atelier, frame wall ]", span: "col-span-2" },
-  { variant: "square", caption: "[ macro — temple tip, hand-finished ]" },
-  { variant: "portrait", caption: "[ portrait — model, slim metal ]" },
+  { variant: "tall", src: "/assets/images/home-page/lookbook-1-tall-model.jpg", alt: "Model wearing oversized round frames", span: "row-span-2" },
+  { variant: "square", src: "/assets/images/home-page/lookbook-2-square-macro.jpg", alt: "Macro — acetate detail, gold rivet" },
+  { variant: "portrait", src: "/assets/images/home-page/lookbook-3-portrait-couple.jpg", alt: "Couple in golden-hour light" },
+  { variant: "landscape", src: "/assets/images/home-page/lookbook-4-landscape-interior.jpg", alt: "Senoia atelier interior, frame wall", span: "col-span-2" },
+  { variant: "square", src: "/assets/images/home-page/lookbook-5-square-macro.jpg", alt: "Macro — hand-finished temple tip" },
+  { variant: "portrait", src: "/assets/images/home-page/lookbook-6-portrait-model.jpg", alt: "Model wearing slim metal frames" },
 ];
 
 export default function Lookbook() {
@@ -50,7 +60,17 @@ export default function Lookbook() {
               className={`group cursor-pointer overflow-hidden ${t.span ?? ""}`}
             >
               <div className="h-full transition-transform duration-1000 ease-expo group-hover:scale-[1.04]">
-                <Placeholder variant={t.variant} caption={t.caption} className="h-full w-full" />
+                <div className={`relative h-full w-full ${ASPECT[t.variant]}`}>
+                  <Image
+                    src={t.src}
+                    alt={t.alt}
+                    fill
+                    loading="eager"
+                    sizes="(min-width: 768px) 25vw, 50vw"
+                    quality={85}
+                    className="object-cover object-center"
+                  />
+                </div>
               </div>
             </motion.div>
           ))}

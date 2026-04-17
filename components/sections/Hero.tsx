@@ -2,10 +2,10 @@
 
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
+import Image from "next/image";
 import EyebrowLabel from "@/components/ui/EyebrowLabel";
 import WordReveal from "@/components/ui/WordReveal";
 import GlassesMotif from "@/components/ui/GlassesMotif";
-import Placeholder from "@/components/ui/Placeholder";
 import { site } from "@/data/site";
 
 export default function Hero() {
@@ -27,10 +27,23 @@ export default function Hero() {
     >
       {/* Parallax photo */}
       <motion.div style={{ y: photoY }} className="absolute inset-0 -inset-y-12">
-        <Placeholder
-          variant="free"
-          tone="dark"
-          className="h-full w-full"
+        <Image
+          src="/assets/images/home-page/hero-mobile.jpg"
+          alt=""
+          fill
+          priority
+          quality={85}
+          sizes="100vw"
+          className="object-cover object-center md:hidden"
+        />
+        <Image
+          src="/assets/images/home-page/hero-desktop.jpg"
+          alt=""
+          fill
+          priority
+          quality={85}
+          sizes="100vw"
+          className="hidden object-cover object-center md:block"
         />
       </motion.div>
 

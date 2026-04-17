@@ -174,6 +174,25 @@ export default function MySection() {
 - **Instagram**: [data/site.ts](data/site.ts) `social.instagram.url` points to generic `https://instagram.com`; swap for the real handle URL when confirmed.
 - **Booking**: external Eyefinity scheduler, wired in [data/site.ts](data/site.ts) `bookingUrl`. All `Book an exam` / `Book online` CTAs read from there and open in a new tab. No in-site booking form.
 
+## Workflow
+
+New pages and features are developed in **git worktrees** under `.claude/worktrees/<name>` on a feature branch (typically `claude/<name>`). The parent repo always has `main` checked out.
+
+When working in a worktree, after completing a visual change to any file, proactively offer to open the modified file in the browser (or preview it) for testing. The user cannot browse to worktree files from the parent repo path, so always use the full worktree path.
+
+When the user approves finished work and says **"ship it"** (or `/ship`), the flow is:
+
+1. Commit any pending changes on the feature branch with a descriptive message and the standard `Co-Authored-By` trailer. Stage specific files — never `git add -A`.
+2. Verify the branch is a fast-forward of `origin/main`. If `git log HEAD..origin/main` is non-empty, the branch has diverged — stop and rebase first (`git rebase origin/main`), never force-push.
+3. `git push -u origin <branch>` — push the feature branch to GitHub.
+4. `git push origin <branch>:main` — fast-forward `origin/main` to the branch tip via refspec push. GitHub will reject this if it's not a fast-forward, which is the desired safety net. **Never** add `--force` or `--force-with-lease`.
+5. `git -C <parent-repo> fetch origin && git -C <parent-repo> merge --ff-only origin/main` — update local `main` in the parent repo. (Refspec fetch into `main` doesn't work because `main` is checked out; the merge in the parent's working tree does.)
+6. Offer to remove the worktree (`ExitWorktree` with `action: "remove"`) and optionally delete the remote feature branch (`git push origin --delete <branch>`). Both require explicit user approval.
+
+The `/ship` skill at `~/.claude/skills/ship/SKILL.md` automates this exact flow. Prefer it over running the steps manually.
+
+**Hard rules:** never force-push, never amend a pushed commit, never bypass hooks (`--no-verify`), never blanket-allow `git push`. Linear history only — no merge commits on `main`.
+
 ## Don't
 
 - Don't import from `framer-motion`; use `motion/react`.

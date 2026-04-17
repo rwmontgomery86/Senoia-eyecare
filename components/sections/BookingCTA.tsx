@@ -2,9 +2,9 @@
 
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
+import Image from "next/image";
 import EyebrowLabel from "@/components/ui/EyebrowLabel";
 import WordReveal from "@/components/ui/WordReveal";
-import Placeholder from "@/components/ui/Placeholder";
 import { site } from "@/data/site";
 
 export default function BookingCTA() {
@@ -21,16 +21,19 @@ export default function BookingCTA() {
       id="book"
       className="relative isolate overflow-hidden bg-charcoal px-6 py-40 text-cream md:px-10 md:py-56 lg:px-14"
     >
-      {/* Parallax bg placeholder */}
+      {/* Parallax bg */}
       <motion.div
         style={{ y: bgY }}
         className="absolute inset-0 -inset-y-16 opacity-60"
       >
-        <Placeholder
-          variant="free"
-          tone="dark"
-          caption="[ ambient — Senoia atelier interior, soft warm light ]"
-          className="h-full w-full"
+        <Image
+          src="/assets/images/home-page/booking-cta-background.jpg"
+          alt=""
+          fill
+          loading="eager"
+          sizes="100vw"
+          quality={85}
+          className="object-cover object-center"
         />
       </motion.div>
 

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import PageHeader from "@/components/ui/PageHeader";
-import Placeholder from "@/components/ui/Placeholder";
 import Testimonials from "@/components/sections/Testimonials";
 import BookingCTA from "@/components/sections/BookingCTA";
 import { doctors } from "@/data/doctors";
@@ -28,11 +28,16 @@ export default function DoctorsIndexPage() {
               <Link href={`/doctors/${d.slug}`} className="block">
                 <div className="overflow-hidden">
                   <div className="transition-transform duration-1000 ease-expo group-hover:-translate-y-2">
-                    <Placeholder
-                      variant="portrait"
-                      caption={d.portraitCaption}
-                      className="w-full"
-                    />
+                    <div className="relative aspect-[3/4] w-full overflow-hidden">
+                      <Image
+                        src={d.portrait}
+                        alt={`Portrait of ${d.name}`}
+                        fill
+                        sizes="(min-width: 768px) 50vw, 100vw"
+                        quality={85}
+                        className="object-cover object-center"
+                      />
+                    </div>
                   </div>
                 </div>
                 <div className="mt-8 flex items-baseline gap-4">

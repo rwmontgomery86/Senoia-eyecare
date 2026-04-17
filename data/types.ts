@@ -17,7 +17,7 @@ export type Doctor = {
   bioIntro: string;
   bioBody: string[];
   focusAreas: string[];
-  portraitCaption: string;
+  portrait: string;
 };
 
 export type TeamMember = {

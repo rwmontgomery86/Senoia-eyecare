@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import EyebrowLabel from "@/components/ui/EyebrowLabel";
 import GoldRule from "@/components/ui/GoldRule";
 import PageBack from "@/components/ui/PageBack";
-import Placeholder from "@/components/ui/Placeholder";
 import BookingCTA from "@/components/sections/BookingCTA";
 import { doctors } from "@/data/doctors";
 
@@ -41,11 +41,17 @@ export default async function DoctorDetailPage(
       <section className="relative bg-cream px-6 pb-32 pt-12 md:px-10 md:pb-40 md:pt-16 lg:px-14">
         <div className="mx-auto grid max-w-[1280px] grid-cols-1 gap-16 md:grid-cols-12 md:gap-20">
           <div className="md:col-span-5">
-            <Placeholder
-              variant="portrait"
-              caption={doctor.portraitCaption}
-              className="w-full"
-            />
+            <div className="relative aspect-[3/4] w-full overflow-hidden">
+              <Image
+                src={doctor.portrait}
+                alt={`Portrait of ${doctor.name}`}
+                fill
+                priority
+                sizes="(min-width: 768px) 42vw, 100vw"
+                quality={85}
+                className="object-cover object-center"
+              />
+            </div>
           </div>
           <div className="md:col-span-7">
             <GoldRule width="6rem" />
