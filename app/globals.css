@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body {
+  background-color: #f5f0e8;
+  color: #2a2826;
+  font-family: var(--font-body), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: #a8884d;
+  color: #f5f0e8;
+}
+
+/* Smoother scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus rings in gold */
+*:focus-visible {
+  outline: 2px solid #a8884d;
+  outline-offset: 3px;
+}
+
+/* Hide scrollbars on horizontal drag containers */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Marquee inner element duplication trick */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* SVG draw-on path */
+.draw-path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawOn 2.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Reduced motion overrides */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .draw-path {
+    stroke-dashoffset: 0;
+  }
+}

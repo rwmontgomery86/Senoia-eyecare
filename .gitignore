@@ -1,0 +1,15 @@
+node_modules
+.next
+.DS_Store
+*.tsbuildinfo
+next-env.d.ts
+
+# Environment
+.env
+.env*.local
+
+# Vercel CLI
+.vercel
+
+# Claude Code local-only settings (launch.json is shared)
+.claude/settings.local.json
