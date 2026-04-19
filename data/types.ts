@@ -49,9 +49,10 @@ export type SiteConfig = {
   url: string;
   bookingUrl: string;
   phone: { display: string; tel: string };
+  fax: string;
   email: string;
   address: { line1: string; line2: string };
   hours: string[];
-  social: { instagram: { handle: string; url: string } };
+  social: { facebook: { handle: string; url: string } };
   founded: string;
 };

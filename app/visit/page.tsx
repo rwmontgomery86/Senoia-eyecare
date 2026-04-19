@@ -41,6 +41,7 @@ export default function VisitPage() {
                     {site.phone.display}
                   </a>
                 </li>
+                <li className="text-charcoal/55">Fax · {site.fax}</li>
                 <li>
                   <a href={`mailto:${site.email}`} className="hover:text-gold">
                     {site.email}
@@ -70,7 +71,7 @@ export default function VisitPage() {
           <div className="md:col-span-7">
             <Placeholder
               variant="square"
-              caption="[ map — Senoia, Georgia · 120 Main Street ]"
+              caption={`[ map — Senoia, Georgia · ${site.address.line1} ]`}
               className="w-full"
             />
           </div>

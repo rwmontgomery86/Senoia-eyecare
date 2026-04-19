@@ -71,7 +71,7 @@ export default function Hero() {
         >
           <span className="block h-px w-10 bg-gold/70" />
           <EyebrowLabel tone="cream" className="text-cream/85">
-            Senoia, Georgia · Est. 2018
+            Senoia, Georgia · Est. {site.founded}
           </EyebrowLabel>
         </motion.div>
 

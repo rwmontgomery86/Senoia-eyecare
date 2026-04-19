@@ -27,20 +27,18 @@ export default function Footer() {
             </p>
             <div className="mt-8 flex items-center gap-5">
               <a
-                href={site.social.instagram.url}
+                href={site.social.facebook.url}
                 target="_blank"
                 rel="noopener"
-                aria-label="Instagram"
+                aria-label="Facebook"
                 className="group inline-flex items-center gap-2 text-[11px] uppercase tracking-eyebrow text-cream/70 transition-colors hover:text-gold"
               >
                 <span className="grid h-9 w-9 place-items-center border border-cream/30 transition-colors group-hover:border-gold">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4">
-                    <rect x="3" y="3" width="18" height="18" rx="4" />
-                    <circle cx="12" cy="12" r="4" />
-                    <circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" />
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="round">
+                    <path d="M17 2h-3a5 5 0 0 0-5 5v3H6v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
                   </svg>
                 </span>
-                {site.social.instagram.handle}
+                {site.social.facebook.handle}
               </a>
             </div>
           </div>
@@ -56,6 +54,7 @@ export default function Footer() {
                   {site.phone.display}
                 </a>
               </li>
+              <li className="text-cream/55">Fax · {site.fax}</li>
               <li>
                 <a href={`mailto:${site.email}`} className="hover:text-gold">
                   {site.email}
