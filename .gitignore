@@ -13,3 +13,7 @@ next-env.d.ts
 
 # Claude Code local-only settings (launch.json is shared)
 .claude/settings.local.json
+.claude/worktrees/
+
+# Source/raw asset library — kept outside git; shipped assets live in public/
+assets/
