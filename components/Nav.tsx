@@ -9,6 +9,7 @@ import { site } from "@/data/site";
 const NAV_LINKS = [
   { label: "Care", href: "/care" },
   { label: "Doctors", href: "/doctors" },
+  { label: "Patient forms", href: "/forms" },
   { label: "Visit", href: "/visit" },
   { label: "Insurances", href: "/insurances" },
 ];
@@ -36,12 +37,33 @@ export default function Nav() {
       className={`fixed top-0 z-50 w-full transition-all duration-700 ease-expo ${barClasses}`}
     >
       <div className="mx-auto flex max-w-[1440px] items-center justify-between px-6 md:px-10 lg:px-14">
-        {/* Mobile-only spacer — mirrors hamburger width so logo centers in viewport */}
-        <div aria-hidden className="h-10 w-10 md:hidden" />
+        {/* Mobile-only phone link (left) */}
+        <div className="flex flex-1 items-center md:hidden">
+          <a
+            href={`tel:${site.phone.tel}`}
+            aria-label={`Call ${site.phone.display}`}
+            className="inline-flex items-center gap-2 rounded-full bg-gold px-4 py-2 font-body text-[11px] uppercase tracking-eyebrow text-charcoal transition-colors duration-500 ease-expo hover:bg-gold-light"
+          >
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.7"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden
+            >
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg>
+            Call
+          </a>
+        </div>
 
         {/* Left links (desktop) */}
         <nav className="hidden flex-1 items-center gap-10 md:flex">
-          {NAV_LINKS.slice(0, 2).map((l) => (
+          {NAV_LINKS.slice(0, 3).map((l) => (
             <Link
               key={l.href}
               href={l.href}
@@ -71,7 +93,7 @@ export default function Nav() {
 
         {/* Right links + CTA (desktop) */}
         <nav className="hidden flex-1 items-center justify-end gap-8 md:flex">
-          {NAV_LINKS.slice(2).map((l) => (
+          {NAV_LINKS.slice(3).map((l) => (
             <Link
               key={l.href}
               href={l.href}
@@ -98,9 +120,10 @@ export default function Nav() {
         </nav>
 
         {/* Mobile hamburger */}
+        <div className="flex flex-1 items-center justify-end md:hidden">
         <button
           onClick={() => setMobileOpen((v) => !v)}
-          className="flex h-10 w-10 items-center justify-center md:hidden"
+          className="flex h-10 w-10 items-center justify-center"
           aria-label="Open menu"
         >
           <span className="flex h-10 w-10 flex-col items-center justify-center gap-1.5">
@@ -115,6 +138,7 @@ export default function Nav() {
             />
           </span>
         </button>
+        </div>
       </div>
 
       {/* Mobile drawer */}

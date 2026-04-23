@@ -119,13 +119,6 @@ export default function Hero() {
                 →
               </span>
             </a>
-            <a
-              href="#featured"
-              className="group inline-flex items-center gap-3 font-body text-[11px] uppercase tracking-eyebrow text-cream/80 transition-colors hover:text-gold"
-            >
-              <span className="h-px w-8 bg-cream/40 transition-all duration-500 ease-expo group-hover:w-12 group-hover:bg-gold" />
-              See the collection
-            </a>
           </motion.div>
         </div>
       </motion.div>

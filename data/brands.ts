@@ -1,14 +1,14 @@
 import type { Brand } from "./types";
 
 export const brands: Brand[] = [
-  "Lunor",
-  "Lindberg",
-  "Dita",
-  "Tom Ford",
-  "Barton Perreira",
-  "Garrett Leight",
-  "Oliver Peoples",
-  "Theo",
-  "Persol",
-  "Mr. Leight",
+  "Maui Jim",
+  "Ray-Ban",
+  "Cinzia",
+  "Etnia",
+  "Betsey Johnson",
+  "Ovvo",
+  "Evatik",
+  "State",
+  "Fysh",
+  "Tifosi",
 ];

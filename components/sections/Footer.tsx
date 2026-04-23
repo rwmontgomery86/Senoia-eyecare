@@ -108,6 +108,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/forms" className="hover:text-gold">
+                  Patient forms
+                </Link>
+              </li>
+              <li>
                 <a
                   href={site.bookingUrl}
                   target="_blank"

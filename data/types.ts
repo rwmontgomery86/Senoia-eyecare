@@ -43,6 +43,12 @@ export type Testimonial = {
 
 export type Brand = string;
 
+export type PatientForm = {
+  title: string;
+  description: string;
+  url: string;
+};
+
 export type InsuranceGroup = {
   eyebrow: string;
   title: string;
