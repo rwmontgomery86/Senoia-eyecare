@@ -3,18 +3,22 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { site } from "@/data/site";
 
 const NAV_LINKS = [
-  { label: "Eyewear", href: "/#featured" },
   { label: "Care", href: "/care" },
   { label: "Doctors", href: "/doctors" },
   { label: "Visit", href: "/visit" },
+  { label: "Insurances", href: "/insurances" },
 ];
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  const light = !isHome || scrolled;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
@@ -23,7 +27,7 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const barClasses = scrolled
+  const barClasses = light
     ? "bg-cream/85 backdrop-blur-xl border-b border-charcoal/5 text-charcoal"
     : "bg-transparent text-cream";
 
@@ -32,6 +36,9 @@ export default function Nav() {
       className={`fixed top-0 z-50 w-full transition-all duration-700 ease-expo ${barClasses}`}
     >
       <div className="mx-auto flex max-w-[1440px] items-center justify-between px-6 md:px-10 lg:px-14">
+        {/* Mobile-only spacer — mirrors hamburger width so logo centers in viewport */}
+        <div aria-hidden className="h-10 w-10 md:hidden" />
+
         {/* Left links (desktop) */}
         <nav className="hidden flex-1 items-center gap-10 md:flex">
           {NAV_LINKS.slice(0, 2).map((l) => (
@@ -58,7 +65,7 @@ export default function Nav() {
             priority
             className={`w-auto transition-all duration-700 ease-expo ${
               scrolled ? "h-10" : "h-14 md:h-16"
-            } ${scrolled ? "" : "[filter:brightness(0)_invert(1)]"}`}
+            } ${light ? "" : "[filter:brightness(0)_invert(1)]"}`}
           />
         </Link>
 
@@ -77,8 +84,8 @@ export default function Nav() {
             href={site.bookingUrl}
             target="_blank"
             rel="noopener"
-            className={`group inline-flex items-center gap-2 border px-5 py-2.5 text-[10px] uppercase tracking-eyebrow transition-all duration-500 ease-expo ${
-              scrolled
+            className={`group inline-flex shrink-0 items-center gap-2 whitespace-nowrap border px-5 py-2.5 text-[10px] uppercase tracking-eyebrow transition-all duration-500 ease-expo ${
+              light
                 ? "border-charcoal/30 text-charcoal hover:border-gold hover:text-gold"
                 : "border-cream/40 text-cream hover:border-gold hover:text-gold"
             }`}
@@ -93,18 +100,18 @@ export default function Nav() {
         {/* Mobile hamburger */}
         <button
           onClick={() => setMobileOpen((v) => !v)}
-          className="flex flex-1 justify-end md:hidden"
+          className="flex h-10 w-10 items-center justify-center md:hidden"
           aria-label="Open menu"
         >
           <span className="flex h-10 w-10 flex-col items-center justify-center gap-1.5">
             <span
-              className={`block h-px w-6 transition-all duration-500 ease-expo ${scrolled ? "bg-charcoal" : "bg-cream"} ${mobileOpen ? "translate-y-[7px] rotate-45" : ""}`}
+              className={`block h-px w-6 transition-all duration-500 ease-expo ${light ? "bg-charcoal" : "bg-cream"} ${mobileOpen ? "translate-y-[7px] rotate-45" : ""}`}
             />
             <span
-              className={`block h-px w-6 transition-all duration-300 ${scrolled ? "bg-charcoal" : "bg-cream"} ${mobileOpen ? "opacity-0" : ""}`}
+              className={`block h-px w-6 transition-all duration-300 ${light ? "bg-charcoal" : "bg-cream"} ${mobileOpen ? "opacity-0" : ""}`}
             />
             <span
-              className={`block h-px w-6 transition-all duration-500 ease-expo ${scrolled ? "bg-charcoal" : "bg-cream"} ${mobileOpen ? "-translate-y-[7px] -rotate-45" : ""}`}
+              className={`block h-px w-6 transition-all duration-500 ease-expo ${light ? "bg-charcoal" : "bg-cream"} ${mobileOpen ? "-translate-y-[7px] -rotate-45" : ""}`}
             />
           </span>
         </button>

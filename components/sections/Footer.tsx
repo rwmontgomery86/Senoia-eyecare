@@ -103,6 +103,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/insurances" className="hover:text-gold">
+                  Insurances
+                </Link>
+              </li>
+              <li>
                 <a
                   href={site.bookingUrl}
                   target="_blank"

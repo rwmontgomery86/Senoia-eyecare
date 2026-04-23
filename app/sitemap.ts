@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/doctors",
     "/team",
     "/visit",
+    "/insurances",
     "/journal",
     "/privacy",
     "/accessibility",

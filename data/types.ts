@@ -43,6 +43,13 @@ export type Testimonial = {
 
 export type Brand = string;
 
+export type InsuranceGroup = {
+  eyebrow: string;
+  title: string;
+  caption: string;
+  carriers: string[];
+};
+
 export type SiteConfig = {
   name: string;
   tagline: string;
