@@ -1,10 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "motion/react";
 import EyebrowLabel from "@/components/ui/EyebrowLabel";
 import GoldRule from "@/components/ui/GoldRule";
 import WordReveal from "@/components/ui/WordReveal";
-import Placeholder from "@/components/ui/Placeholder";
 
 export default function FeaturedFrame() {
   return (
@@ -32,30 +32,28 @@ export default function FeaturedFrame() {
           {/* Left: serial + headline */}
           <div className="md:col-span-5">
             <motion.div
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.4 }}
               transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
+              className="flex items-baseline gap-5"
             >
-              <span className="block font-display text-[14vw] leading-[0.85] text-gold/30 md:text-[10rem] lg:text-[12rem]">
+              <span className="font-accent text-base italic text-gold">
                 N°&nbsp;014
               </span>
-            </motion.div>
-
-            <div className="mt-8">
               <WordReveal
-                text="Lunor — A11"
+                text="State — Reid"
                 as="h2"
                 className="font-display text-cream uppercase leading-[1.05] text-4xl md:text-5xl tracking-wide2"
               />
-            </div>
+            </motion.div>
 
             <p className="mt-6 max-w-md font-accent text-xl italic text-gold-light">
-              Hand-finished German titanium, in champagne tortoise.
+              Hand-built Chicago titanium, with an acetate inlay cut by hand.
             </p>
           </div>
 
-          {/* Right: large frame placeholder */}
+          {/* Right: framed image */}
           <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -63,12 +61,19 @@ export default function FeaturedFrame() {
             transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
             className="md:col-span-7"
           >
-            <Placeholder
-              variant="landscape"
-              tone="dark"
-              caption="[ featured frame — Lunor A11, on linen surface, 4:3 ratio ]"
-              className="w-full"
-            />
+            <div className="relative p-3">
+              <div className="pointer-events-none absolute inset-0 border border-gold/40" />
+              <div className="relative aspect-[16/9] w-full overflow-hidden">
+                <Image
+                  src="/assets/images/home-page/featured-frame-state-reid.jpg"
+                  alt="State Reid frame — hand-built Chicago titanium with acetate inlay"
+                  fill
+                  sizes="(min-width: 768px) 58vw, 100vw"
+                  quality={85}
+                  className="object-cover object-center"
+                />
+              </div>
+            </div>
           </motion.div>
         </div>
 
@@ -80,9 +85,11 @@ export default function FeaturedFrame() {
           className="mt-16 grid grid-cols-1 gap-10 border-t border-cream/10 pt-12 md:grid-cols-12 md:gap-20"
         >
           <p className="md:col-span-7 font-body text-base font-light leading-relaxed text-cream/75 md:text-lg">
-            A study in restraint. The A11 carries forward Lunor&apos;s
-            century-long obsession with proportion — round, light, and
-            unmistakably present. Available exclusively at the Senoia atelier.
+            A study in American craft. The Reid takes its silhouette from the
+            1914 Reid Murdoch clocktower on the Chicago River — titanium for
+            the industry, acetate for the sun, earth, and water it overlooks.
+            Built by seventy hands in Chicago. Available exclusively at the
+            Senoia atelier.
           </p>
           <div className="flex items-end justify-start md:col-span-5 md:justify-end">
             <a
