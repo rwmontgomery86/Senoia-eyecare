@@ -38,7 +38,7 @@ export type JournalPost = {
 export type Testimonial = {
   text: string;
   name: string;
-  note: string;
+  note?: string;
 };
 
 export type Brand = string;

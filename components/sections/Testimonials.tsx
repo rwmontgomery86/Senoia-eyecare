@@ -156,9 +156,11 @@ export default function Testimonials() {
                   <p className="font-display text-sm uppercase tracking-wide2 text-charcoal">
                     {q.name}
                   </p>
-                  <p className="mt-1 text-[10px] uppercase tracking-eyebrow text-charcoal/60">
-                    {q.note}
-                  </p>
+                  {q.note && (
+                    <p className="mt-1 text-[10px] uppercase tracking-eyebrow text-charcoal/60">
+                      {q.note}
+                    </p>
+                  )}
                 </div>
               </figcaption>
             </motion.figure>
