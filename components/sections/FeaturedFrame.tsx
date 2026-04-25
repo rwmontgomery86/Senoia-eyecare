@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "motion/react";
 import EyebrowLabel from "@/components/ui/EyebrowLabel";
 import GoldRule from "@/components/ui/GoldRule";
@@ -92,15 +93,15 @@ export default function FeaturedFrame() {
             Senoia atelier.
           </p>
           <div className="flex items-end justify-start md:col-span-5 md:justify-end">
-            <a
-              href="#"
+            <Link
+              href="/featured-frame"
               className="group inline-flex items-center gap-3 border border-gold/60 px-7 py-4 font-body text-[11px] uppercase tracking-eyebrow text-gold transition-all duration-500 ease-expo hover:border-gold-light hover:text-gold-light"
             >
               Discover this frame
               <span className="inline-block transition-transform duration-500 ease-expo group-hover:translate-x-1">
                 →
               </span>
-            </a>
+            </Link>
           </div>
         </motion.div>
       </div>
