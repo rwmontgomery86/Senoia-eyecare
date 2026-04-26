@@ -101,7 +101,7 @@ export default function Testimonials() {
   return (
     <section
       id="words"
-      className="relative overflow-hidden bg-cream-deep py-32 md:py-40"
+      className="relative overflow-hidden bg-cream py-32 md:py-40"
     >
       <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-14">
         <div className="flex flex-col gap-4">
@@ -142,7 +142,7 @@ export default function Testimonials() {
                 delay: i * 0.08,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="flex w-[80vw] max-w-[520px] flex-col justify-between border border-charcoal/10 bg-cream p-10 md:w-[520px] md:p-14"
+              className="flex w-[80vw] max-w-[520px] flex-col justify-between border border-charcoal/10 bg-cream-deep p-10 md:w-[520px] md:p-14"
             >
               <span className="font-display text-7xl leading-none text-gold/70 md:text-8xl">
                 &ldquo;

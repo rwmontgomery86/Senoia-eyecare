@@ -3,7 +3,7 @@ import { brands } from "@/data/brands";
 
 export default function BrandsStrip() {
   return (
-    <section className="relative overflow-hidden bg-cream py-20 md:py-24">
+    <section className="relative overflow-hidden bg-cream-deep py-20 md:py-24">
       <div className="mb-10 flex justify-center">
         <EyebrowLabel>The collection · A curated house</EyebrowLabel>
       </div>
@@ -22,8 +22,8 @@ export default function BrandsStrip() {
         </div>
 
         {/* Edge fades */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-cream to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-cream to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-cream-deep to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-cream-deep to-transparent" />
       </div>
     </section>
   );
