@@ -6,7 +6,7 @@ import GoldRule from "@/components/ui/GoldRule";
 import WordReveal from "@/components/ui/WordReveal";
 import { site } from "@/data/site";
 
-export default function VisitBannerB() {
+export default function VisitBanner() {
   return (
     <section className="relative bg-charcoal-deep px-6 py-32 text-cream md:px-10 md:py-40 lg:px-14">
       <div className="mx-auto flex max-w-[640px] flex-col items-center text-center">
@@ -16,7 +16,7 @@ export default function VisitBannerB() {
         </div>
         <div className="mt-4">
           <WordReveal
-            as="h2"
+            as="h1"
             text="Unhurried care, by appointment."
             className="font-display text-cream uppercase leading-[1.05] text-3xl md:text-5xl tracking-wide2"
           />

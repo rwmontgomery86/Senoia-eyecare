@@ -2,11 +2,8 @@ import type { Metadata } from "next";
 import AddressLink from "@/components/ui/AddressLink";
 import EyebrowLabel from "@/components/ui/EyebrowLabel";
 import GoldRule from "@/components/ui/GoldRule";
-import PageHeader from "@/components/ui/PageHeader";
 import BookingCTA from "@/components/sections/BookingCTA";
-import VisitBannerA from "@/components/sections/visit-banner-variants/VisitBannerA";
-import VisitBannerB from "@/components/sections/visit-banner-variants/VisitBannerB";
-import VisitBannerC from "@/components/sections/visit-banner-variants/VisitBannerC";
+import VisitBanner from "@/components/sections/VisitBanner";
 import { site } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -14,29 +11,10 @@ export const metadata: Metadata = {
   description: `Address, hours, and how to find us. ${site.address.line1}, ${site.address.line2}.`,
 };
 
-function VariantBanner({ v }: { v: string | undefined }) {
-  if (v === "1") return <VisitBannerA />;
-  if (v === "2") return <VisitBannerB />;
-  if (v === "3") return <VisitBannerC />;
-  return null;
-}
-
-export default async function VisitPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ v?: string; hero?: string }>;
-}) {
-  const { v, hero } = await searchParams;
-  const heroBanner = hero ? <VariantBanner v={hero} /> : null;
+export default function VisitPage() {
   return (
     <main className="relative">
-      {heroBanner ?? (
-        <PageHeader
-          eyebrow="Visit"
-          title="Finding us."
-          description="One door, on Main Street, in the quietest corner of the square. Come early; stay a while."
-        />
-      )}
+      <VisitBanner />
 
       <section className="relative bg-cream-deep px-6 py-32 md:px-10 md:py-40 lg:px-14">
         <div className="mx-auto grid max-w-[1280px] grid-cols-1 gap-16 md:grid-cols-12 md:gap-20">
@@ -96,8 +74,6 @@ export default async function VisitPage({
           </div>
         </div>
       </section>
-
-      <VariantBanner v={v} />
 
       <BookingCTA />
     </main>
