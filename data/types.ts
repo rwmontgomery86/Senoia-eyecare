@@ -61,6 +61,7 @@ export type SiteConfig = {
   tagline: string;
   url: string;
   bookingUrl: string;
+  mapEmbedUrl: string;
   phone: { display: string; tel: string };
   fax: string;
   email: string;
