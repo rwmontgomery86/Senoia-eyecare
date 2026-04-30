@@ -1,8 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
-import Placeholder from "@/components/ui/Placeholder";
 import type { Frame } from "@/data/frames";
 
 export default function FrameCard({
@@ -28,11 +28,14 @@ export default function FrameCard({
         className="group block text-charcoal"
       >
         <div className="relative overflow-hidden">
-          <div className="transition-transform duration-1000 ease-expo group-hover:scale-[1.04]">
-            <Placeholder
-              variant="square"
-              tone="light"
-              caption={`[ ${frame.brand} ${frame.model} — macro, 1:1 ]`}
+          <div className="relative aspect-square w-full transition-transform duration-1000 ease-expo group-hover:scale-[1.04]">
+            <Image
+              src={`/assets/images/home-page/featured-frame-${frame.slug}.jpg`}
+              alt={`${frame.brand} ${frame.model} frame`}
+              fill
+              sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+              quality={85}
+              className="object-cover object-center"
             />
           </div>
           <span className="pointer-events-none absolute right-5 top-5 font-accent text-lg italic text-gold">
