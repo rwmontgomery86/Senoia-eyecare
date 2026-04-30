@@ -20,7 +20,7 @@ export default function Philosophy() {
               <EyebrowLabel>Our philosophy</EyebrowLabel>
             </div>
             <WordReveal
-              text="Eyewear should feel inevitable — not chosen, but found."
+              text="A small practice for two careful crafts."
               as="h2"
               className="mt-6 font-display text-charcoal uppercase leading-[1.05] text-4xl md:text-5xl lg:text-6xl tracking-wide2"
             />
@@ -32,13 +32,13 @@ export default function Philosophy() {
               className="mt-10"
             >
               <p className="font-body text-base font-light leading-relaxed text-charcoal/80 md:text-lg">
-                For seven generations, the small town of Senoia has been a place
-                that rewards a slower second look. Our practice is built on the
-                same principle: that comprehensive eye care and quietly
-                extraordinary frames belong together, in a room without rush.
+                Senoia Eyecare is built around a quiet conviction: that careful
+                clinical work and well-chosen eyewear belong together, in the
+                same unhurried room. Founded in 2024, the practice was made for
+                patients who notice the difference.
               </p>
               <p className="mt-6 font-accent text-xl italic text-gold">
-                — A studio for the considered eye.
+                — Eye care and eyewear, equally.
               </p>
             </motion.div>
           </div>
