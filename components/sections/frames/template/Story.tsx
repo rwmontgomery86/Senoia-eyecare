@@ -1,12 +1,16 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "motion/react";
 import EyebrowLabel from "@/components/ui/EyebrowLabel";
 import GoldRule from "@/components/ui/GoldRule";
 import Placeholder from "@/components/ui/Placeholder";
 import WordReveal from "@/components/ui/WordReveal";
+import type { Frame } from "@/data/frames";
 
-export default function Story() {
+export default function Story({ frame }: { frame: Frame }) {
+  const { story } = frame;
+
   return (
     <section
       id="story"
@@ -15,7 +19,7 @@ export default function Story() {
       <div className="mx-auto max-w-[1280px]">
         <div className="flex flex-col items-start gap-4">
           <GoldRule width="6rem" />
-          <EyebrowLabel>The story · 01</EyebrowLabel>
+          <EyebrowLabel>{story.eyebrow}</EyebrowLabel>
         </div>
 
         <div className="mt-14 grid grid-cols-1 gap-16 md:mt-20 md:grid-cols-12 md:gap-20">
@@ -26,11 +30,24 @@ export default function Story() {
             transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
             className="md:col-span-6"
           >
-            <Placeholder
-              variant="portrait"
-              tone="light"
-              caption="[ atelier hand · brushing titanium ]"
-            />
+            {story.image.src ? (
+              <div className="relative aspect-[3/4] w-full overflow-hidden">
+                <Image
+                  src={story.image.src}
+                  alt={story.image.alt ?? ""}
+                  fill
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  quality={85}
+                  className="object-cover object-center"
+                />
+              </div>
+            ) : (
+              <Placeholder
+                variant="portrait"
+                tone="light"
+                caption={story.image.caption}
+              />
+            )}
           </motion.div>
 
           <motion.div
@@ -45,31 +62,19 @@ export default function Story() {
             className="md:col-span-6 md:pt-4"
           >
             <WordReveal
-              text="From a clocktower on the Chicago River."
+              text={story.headline}
               as="h2"
               className="font-display text-charcoal uppercase leading-[1.05] text-3xl md:text-4xl lg:text-5xl tracking-wide2"
             />
             <div className="mt-10 space-y-6">
-              <p className="font-body text-base font-light leading-relaxed text-charcoal/80 md:text-lg">
-                The Reid Murdoch building has stood at the corner of LaSalle
-                and the river since 1914. Its clocktower has kept Chicago on
-                time for more than a century — a quiet civic instrument,
-                hidden in plain sight. The frame takes its name, and its
-                proportion, from the building.
-              </p>
-              <p className="font-body text-base font-light leading-relaxed text-charcoal/80">
-                State Optical builds in Chicago. Seventy craftspeople, working
-                by hand, in one factory — finishing each frame from titanium
-                and acetate sourced globally and assembled patiently. A frame
-                for someone who considers how a thing is made with as much
-                mindfulness as how it looks.
-              </p>
-              <p className="font-body text-base font-light leading-relaxed text-charcoal/80">
-                Titanium for the industry. Acetate for the sun, the earth, and
-                the water the building overlooks. The Reid is the place where
-                those two ideas meet — one in the bone of the frame, the other
-                cut by hand into its insert.
-              </p>
+              {story.body.map((paragraph, i) => (
+                <p
+                  key={i}
+                  className="font-body text-base font-light leading-relaxed text-charcoal/80 md:text-lg"
+                >
+                  {paragraph}
+                </p>
+              ))}
             </div>
           </motion.div>
         </div>
@@ -82,12 +87,12 @@ export default function Story() {
           className="mt-32 flex flex-col items-center text-center md:mt-40"
         >
           <p className="max-w-3xl font-accent italic leading-[1.25] text-charcoal/85 text-[clamp(2rem,3.6vw,3rem)]">
-            “A frame should tell you who made it without saying so.”
+            &ldquo;{story.pullQuote.text}&rdquo;
           </p>
           <div className="mt-8 flex items-center gap-4">
             <span aria-hidden className="block h-px w-12 bg-gold/70" />
             <span className="font-body text-[10px] uppercase tracking-eyebrow text-charcoal/60">
-              Dr. Ross Montgomery · OD
+              {story.pullQuote.attribution}
             </span>
           </div>
         </motion.div>
