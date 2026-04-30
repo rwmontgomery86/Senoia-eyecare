@@ -142,26 +142,27 @@ export default function Testimonials() {
                 delay: i * 0.08,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="flex w-[80vw] max-w-[520px] flex-col justify-between border border-charcoal/10 bg-cream-deep p-10 md:w-[520px] md:p-14"
+              className="flex w-[80vw] max-w-[560px] flex-col border-t border-gold/50 bg-cream-deep p-10 md:w-[440px] md:p-12 lg:w-[520px] lg:p-14"
             >
-              <span className="font-display text-7xl leading-none text-gold/70 md:text-8xl">
-                &ldquo;
-              </span>
-              <blockquote className="mt-2 font-accent text-2xl italic leading-snug text-charcoal/85 md:text-3xl">
-                {q.text}
+              <div
+                aria-label="5 out of 5 stars"
+                className="flex items-center gap-1.5 text-gold"
+              >
+                {Array.from({ length: 5 }).map((_, s) => (
+                  <Star key={s} />
+                ))}
+              </div>
+
+              <blockquote className="mt-10 font-accent text-xl italic leading-relaxed text-charcoal/85 md:text-2xl md:leading-relaxed">
+                &ldquo;{q.text}&rdquo;
               </blockquote>
-              <figcaption className="mt-12 flex items-center gap-4">
-                <span className="block h-px w-8 bg-gold" />
-                <div>
-                  <p className="font-display text-sm uppercase tracking-wide2 text-charcoal">
-                    {q.name}
-                  </p>
-                  {q.note && (
-                    <p className="mt-1 text-[10px] uppercase tracking-eyebrow text-charcoal/60">
-                      {q.note}
-                    </p>
-                  )}
-                </div>
+
+              <figcaption className="mt-12 font-body text-[11px] uppercase tracking-eyebrow text-gold">
+                <span aria-hidden>—&nbsp;</span>
+                <span className="text-charcoal/70">{q.name}</span>
+                {q.note && (
+                  <span className="ml-2 text-charcoal/45">· {q.note}</span>
+                )}
               </figcaption>
             </motion.figure>
           ))}
@@ -173,5 +174,20 @@ export default function Testimonials() {
         Drag to read more
       </div>
     </section>
+  );
+}
+
+function Star() {
+  return (
+    <svg
+      aria-hidden
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className="shrink-0"
+    >
+      <path d="M12 2.5l2.95 6.6 7.05.62-5.32 4.78 1.62 7-6.3-3.85L5.7 21.5l1.62-7L2 9.72l7.05-.62L12 2.5z" />
+    </svg>
   );
 }
